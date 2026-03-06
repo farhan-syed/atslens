@@ -1,0 +1,92 @@
+@{
+    ViewData["Title"] = "ATSLens";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<header class="topbar">
+    <div class="brand">ATSLens</div>
+</header>
+
+<section class="hero" id="how-it-works">
+    <div class="hero-copy">
+        <p class="eyebrow">Recruiter Search Visibility</p>
+        <h1>Make your resume searchable, not invisible.</h1>
+        <p class="subhead">ATS is a keyword search system. This app helps you align exact title, technical keywords, and skills placement so recruiters can actually find you.</p>
+        <div class="hero-actions">
+            <a class="btn btn-primary" href="#analyzer">Start Analysis</a>
+        </div>
+    </div>
+
+    <aside class="hero-panel" aria-label="ATS checklist preview">
+        <h2>Fast ATS Checklist</h2>
+        <ul>
+            <li>Exact target title match</li>
+            <li>10-30 hard skills section</li>
+            <li>Exact phrase mirroring from job post</li>
+            <li>Selectable PDF text</li>
+        </ul>
+        <p>Binary logic: <strong>Likely Visible</strong> or <strong>At Risk</strong>.</p>
+    </aside>
+</section>
+
+<section class="workspace" id="analyzer">
+    <div class="workspace-head">
+        <h2>ATS Analyzer</h2>
+        <p>Paste the job description and your resume text. The analyzer returns missing ATS-relevant keywords and prioritized fixes.</p>
+    </div>
+
+    <form id="analyzer-form" class="panel">
+        <div class="field-grid">
+            <label>
+                <span>Target Job Title (Exact)</span>
+                <input id="targetTitle" type="text" placeholder="Example: Senior Data Analyst" />
+            </label>
+
+            <label class="checkbox-row">
+                <input id="pdfReadable" type="checkbox" />
+                <span>I confirmed my PDF text is selectable/highlightable</span>
+            </label>
+        </div>
+
+        <label>
+            <span>Job Description</span>
+            <textarea id="jobDescription" rows="10" placeholder="Paste the full job posting here..."></textarea>
+        </label>
+
+        <label>
+            <span>Resume Text</span>
+            <textarea id="resumeText" rows="12" placeholder="Paste your resume text here..."></textarea>
+        </label>
+
+        <div class="form-actions">
+            <button id="analyzeBtn" type="submit">Run ATS Analysis</button>
+            <p id="formError" class="error" hidden></p>
+        </div>
+    </form>
+</section>
+
+<section id="results" class="results" hidden>
+    <article class="result-card status">
+        <h2>Visibility Verdict</h2>
+        <p id="visibilityStatus" class="status-pill"></p>
+        <ul id="quickChecks" class="check-list"></ul>
+    </article>
+
+    <article class="result-card">
+        <h2>Priority Guidance</h2>
+        <ul id="priorityFixes" class="tag-list"></ul>
+    </article>
+
+    <article class="result-card">
+        <h2>Suggested Skills Section (copy/paste)</h2>
+        <textarea id="skillsOutput" rows="6" readonly></textarea>
+    </article>
+
+    <article class="result-card">
+        <h2>Keyword Coverage</h2>
+        <p><strong>Matched keywords</strong></p>
+        <ul id="matchedKeywords" class="pill-list"></ul>
+        <p><strong>Missing keywords</strong></p>
+        <ul id="missingKeywords" class="pill-list"></ul>
+    </article>
+</section>

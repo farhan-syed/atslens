@@ -2,6 +2,9 @@ using AtsResumeOptimizer.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var port = Environment.GetEnvironmentVariable("PORT") ?? "5099";
+
+builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
 builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<IResumeAnalyzer, ResumeAnalyzer>();
 
